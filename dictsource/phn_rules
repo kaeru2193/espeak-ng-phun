@@ -1,0 +1,103 @@
+//vowels
+.L01 a i u e o ao ai ua uo
+//codas
+.L02 n m l s ng
+//tones
+.L03 1 2 3 4 55 11 52 14
+
+.group a
+    a (L03  a:
+    a  a
+    ao aO
+    ao (L02 o'
+    ai aI
+    ai (L02 e'
+
+.group b
+    b  b
+
+.group c
+    c  ts
+
+.group d
+    d  d
+
+.group e
+    e (L03 E:
+    e E
+
+.group f
+    f  f
+
+.group g
+    g  g
+
+.group h
+    h  h
+    h (i x
+    h (u x
+
+.group i
+    i (L03 i:
+    i i
+
+.group j
+    j  z'
+
+.group k
+    k  k
+
+.group l
+    l  l
+    l (L03  l2
+    ll (L03 l // succeeded by onset l
+
+.group m
+    m  m
+
+.group n
+    n  n
+    ng N
+
+.group o
+    o (L03 o:
+    o o
+
+.group p
+    p  p
+
+.group q
+    q  tS
+
+.group s
+    s	s
+
+.group t
+    t  t
+
+.group u
+    u (L03 @:
+    u @
+    ua @A
+    uo @O
+
+.group v
+    v  v
+
+.group w
+    w  w
+
+.group x
+    x  s'
+
+.group y
+    y  j
+
+.group z
+    z  z
+
+.group
+    1	44
+    2	11
+    3	51
+    4	14

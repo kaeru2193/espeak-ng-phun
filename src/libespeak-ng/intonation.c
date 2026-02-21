@@ -877,6 +877,10 @@ static void CalcPitches_Tone(Translator *tr)
 					p->stresslevel = 0; // diminished stress
 				}
 			}
+			if (tr->translator_name == L3('p', 'h', 'n')) {
+				if ((prevw_tph->mnemonic == 0x3131) && (tph->mnemonic == 0x3131)) // [11] + [11] (tone 2 in a row)
+					prev_p->tone_ph = PhonemeCode2('1', '4');
+			}
 
 			prev_p = p;
 			prevw_tph = prev_tph = tph;

@@ -1787,6 +1787,9 @@ include ph_norwegian
 phonemetable om base1
 include ph_oromo
 
+phonemetable phn base1
+include ph_phun
+
 phonemetable pl base1
 include ph_polish
 

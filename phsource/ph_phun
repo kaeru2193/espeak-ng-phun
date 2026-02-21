@@ -1,0 +1,233 @@
+//  tone: high level
+phoneme 44   
+  stress
+  Tone(45, 40, envelope/p_level, NULL)
+endphoneme
+
+phoneme 1
+  stress
+  Tone(45, 40, envelope/p_level, NULL)
+endphoneme
+
+//  tone: low level
+phoneme 11 
+  stress
+  Tone(12, 9, envelope/p_fall, NULL)
+endphoneme
+
+phoneme 2  
+  stress
+  Tone(12, 9, envelope/p_fall, NULL)
+endphoneme
+
+//  tone: low rise (tone 2 in a row)
+phoneme 14   
+  stress
+  Tone(12, 40, envelope/p_rise, NULL)
+endphoneme
+
+phoneme 4   
+  stress
+  Tone(12, 40, envelope/p_rise, NULL)
+endphoneme
+
+//  tone: high fall
+phoneme 51
+  stress
+  Tone(50, 10, envelope/p_fall, NULL)
+endphoneme
+
+phoneme 3
+  stress
+  Tone(50, 10, envelope/p_fall, NULL)
+endphoneme
+
+phoneme s
+  vls alv frc sib
+  lengthmod 3
+  Vowelin  f1=0  f2=1700 -300 300  f3=-100 80
+  Vowelout f1=0  f2=1700 -300 250  f3=-100 80  rms=20
+
+  IF nextPhW(z) THEN
+    FMT(voc/z) addWav(ufric/s!, 85)
+  ELIF nextPhW(tS) OR nextPhW(z') OR nextPhW(s') THEN
+    WAV(ufric/sh_pzd2, 20)
+  ENDIF
+  WAV(ufric/s)
+endphoneme
+
+phoneme z
+  vcd alv frc sib
+  lengthmod 3
+  Vowelout f1=0  f2=1700 -300 300  f3=-100 60  len=50
+
+  FMT(voc/z) addWav(ufric/s_, 85)
+endphoneme
+
+phoneme s'
+  vls pla frc sib
+  lengthmod 2
+  ipa ɕ
+  Vowelin f1=0  f2=2700 400 600  f3=300 80
+  WAV(ufric/sh_pzd2, 20)
+endphoneme
+
+phoneme z'
+  vcd pla frc sib
+  lengthmod 6
+  ipa ʒ
+  voicingswitch S
+  Vowelin  f1=0  f2=2000 0 300  f3=-200 80
+  Vowelout f1=2  f2=2000 0 300  f3=-200 80 brk
+  FMT(voc/zh) addWav(vocw/zh, 130)
+endphoneme
+
+phoneme ts
+  vls alv afr sib
+  lengthmod 2
+  Vowelin f1=0  f2=1700 -300 300  f3=-100 80
+  Vowelout f1=0 f2=1700 -300 250  f3=-100 80  rms=20
+  WAV(ustop/ts)
+endphoneme
+
+phoneme f
+  vls blb frc
+  ipa ɸ
+  Vowelout f1=0  f2=1000 -500 -350  f3=-200 80
+  lengthmod 2
+  WAV(ufric/f)
+endphoneme
+
+phoneme v
+  vcd blb frc
+  ipa β
+  Vowelout f1=0  f2=1000 -500 -350  f3=-200 80
+  lengthmod 2
+  FMT(w/w) addWav(ufric/f, 130)
+endphoneme
+
+phoneme l2 //dark L
+  liquid
+  lengthmod 7
+
+  IF nextPhW(isVowel) OR nextPhW(j) OR nextPhW(l) THEN
+    ChangePhoneme(l)
+  ENDIF
+
+  CALL vowelstart_l
+
+  PrevVowelEndings
+    VowelEnding(l/L2_@L, -60)
+    VowelEnding(l/L2_aL, -50)
+    VowelEnding(l/L2_eL, -40)
+    VowelEnding(l/L2_iL, -30)
+    VowelEnding(l/L2_oL, -50)
+    VowelEnding(l/L2_uL, -40)
+  EndSwitch
+endphoneme
+
+phoneme a
+  vwl starttype #a endtype #a
+  length 180
+  FMT(vowel/a)
+endphoneme
+
+phoneme a:
+  vwl starttype #a endtype #a
+  length 250
+  FMT(vowel/a)
+endphoneme
+
+phoneme @
+  vwl starttype #u endtype #u
+  ipa ɯ
+  length 180
+  FMT(vowel/i#_7)
+endphoneme
+
+phoneme @:
+  vwl starttype #u endtype #u
+  ipa ɯ
+  length 250
+  FMT(vowel/i#_7)
+endphoneme
+
+phoneme E
+  ipa ɛ
+  vwl starttype #e endtype #e
+  length 180
+  FMT(vowel/ee_5)
+endphoneme
+
+phoneme E:
+  ipa ɛ
+  vwl starttype #e endtype #e
+  length 250
+  FMT(vowel/ee_5)
+endphoneme
+
+phoneme e'
+  vwl starttype #e endtype #e
+  ipa e
+  length 220
+  FMT(vowel/e)
+endphoneme
+
+phoneme o
+  ipa o
+  vwl starttype #o endtype #o
+  length 180
+  FMT(vowel/o_8)
+endphoneme
+
+phoneme o:
+  ipa o
+  vwl starttype #o endtype #o
+  length 250
+  FMT(vowel/o_8)
+endphoneme
+
+phoneme o'
+  vwl starttype #o endtype #o
+  ipa ɔ
+  length 220
+  FMT(vowel/oo_3)
+endphoneme
+
+phoneme i
+  vwl starttype #i endtype #i
+  length 180
+  IfNextVowelAppend(;)
+  FMT(vowel/i)
+endphoneme
+
+phoneme i:
+  vwl starttype #i endtype #i
+  length 250
+  IfNextVowelAppend(;)
+  FMT(vowel/i)
+endphoneme
+
+phoneme aI
+  vwl  starttype #a  endtype #i
+  length 250
+  FMT(vdiph/ai_2)
+endphoneme
+
+phoneme aO
+  vwl starttype #a endtype #o
+  length 250
+  FMT(vdiph/aau_2)
+endphoneme
+
+phoneme @A
+  vwl starttype #u endtype #a
+  length 250
+  FMT(vdiph2/oa)
+endphoneme
+
+phoneme @O
+  vwl starttype #u endtype #o
+  length 250
+  FMT(vdiph2/uo)
+endphoneme

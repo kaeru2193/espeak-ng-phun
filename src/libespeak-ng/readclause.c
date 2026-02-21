@@ -877,7 +877,7 @@ int ReadClause(Translator *tr, char *buf, short *charix, int *charix_top, int n_
 						} 
 						if (iswlower(c_next) && tr->langopts.lowercase_sentence == false) {
 							// next word has no capital letter, this dot is probably from an abbreviation
-							is_end_clause = false;
+							is_end_clause = true; //false;
 						}
 						if (any_alnum == false) {
 							// no letters or digits yet, so probably not a sentence terminator

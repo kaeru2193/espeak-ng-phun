@@ -1659,6 +1659,18 @@ Translator *SelectTranslator(const char *name)
 		}
 	}
 		break;
+	case L3('p', 'h', 'n'): // for Phun Language
+	{
+		static const short stress_lengths_phn[8] = { 230, 150, 230, 230, 230, 0, 240, 250 }; // 1=tone5. end-of-sentence, 6=tone 1&4, 7=tone 2&3
+		static const unsigned char stress_amps_phn[] = { 22, 22, 22, 22, 22, 22, 22, 22 };
+
+		SetupTranslator(tr, stress_lengths_phn, stress_amps_phn);
+
+		tr->langopts.tone_language = 1; // Tone language, use  CalcPitches_Tone() rather than CalcPitches()
+		tr->langopts.length_mods0 = tr->langopts.length_mods; // don't lengthen vowels in the last syllable
+		tr->langopts.tone_numbers = 1; // a number after letters indicates a tone number (eg. pinyin or jyutping)
+	}
+		break;
 	default:
 		tr->langopts.param[LOPT_UNPRONOUNCABLE] = 1; // disable check for unpronouncable words
 		break;
